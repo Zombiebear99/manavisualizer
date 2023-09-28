@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "mdm",
+    "mwm",
+    " w "
+  ],
+  "key": {
+    "m": {
+      "item": "botania:manasteel_ingot"
+    },
+    "d": {
+      "item": "botania:mana_diamond"
+    },
+    "w": {
+      "item": "botania:twig_wand"
+    }
+  },
+  "result": {
+    "item": "manavisualizer:manareader"
+  }
+}

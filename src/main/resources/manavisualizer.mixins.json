@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "org.zombie.manavisualizer.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "manavisualizer.refmap.json",
+  "mixins": [
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
