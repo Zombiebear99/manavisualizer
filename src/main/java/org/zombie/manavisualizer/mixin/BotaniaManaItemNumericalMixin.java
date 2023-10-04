@@ -20,9 +20,9 @@ import java.util.List;
 		ManaTabletItem.class,
 		BaubleItem.class
 })
-public class BotaniaItemNumericalMixin extends Item
+public class BotaniaManaItemNumericalMixin extends Item
 {
-	public BotaniaItemNumericalMixin(Properties pProperties) {
+	public BotaniaManaItemNumericalMixin(Properties pProperties) {
 		super(pProperties);
 	}
 
@@ -30,7 +30,6 @@ public class BotaniaItemNumericalMixin extends Item
 	public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> components, @NotNull TooltipFlag tooltipFlag) {
 		final ManaItem manaItem = XplatAbstractions.INSTANCE.findManaItem(stack);
 		if (manaItem != null && !ManaTabletItem.isStackCreative(stack)) {
-
 			components.add(Component.literal(String.format("Mana : %s / %s",manaItem.getMana(),manaItem.getMaxMana())).withStyle(ChatFormatting.AQUA));
 		}
 

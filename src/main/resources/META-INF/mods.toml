@@ -71,3 +71,10 @@ versionRange="[1.19.2-76,)"
 modId="curios"
 mandatory=true
 versionRange="[1.19.2-5.1.1.0,)"
+
+[[dependencies.${mod_id}]]
+modId="botania"
+mandatory=true
+versionRange="[1.19.2-436,)"
+ordering="NONE"
+side="BOTH"

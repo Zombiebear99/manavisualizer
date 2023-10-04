@@ -170,9 +170,10 @@ dependencies {
     implementation fg.deobf("mezz.jei:jei-1.19.2-forge-api:11.6.0.1015")
     runtimeOnly fg.deobf("mezz.jei:jei-1.19.2-forge:11.6.0.1015")
 
-//    implementation fg.deobf("curse.maven:kubejs-238086:4744432")
-//    implementation fg.deobf("curse.maven:rhino-416294:4715267")
-//    implementation fg.deobf("curse.maven:architectury-api-419699:4555749")
+
+    implementation fg.deobf("curse.maven:kubejs-238086:4744432")
+    implementation fg.deobf("curse.maven:rhino-416294:4715267")
+    implementation fg.deobf("curse.maven:architectury-api-419699:4555749")
 
     // Example mod dependency with JEI - using fg.deobf() ensures the dependency is remapped to your development mappings
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
