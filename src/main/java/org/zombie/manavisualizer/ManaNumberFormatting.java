@@ -1,5 +1,7 @@
 package org.zombie.manavisualizer;
 
+import net.minecraft.network.chat.Component;
+
 import java.text.DecimalFormat;
 
 public final class ManaNumberFormatting {
@@ -46,5 +48,9 @@ public final class ManaNumberFormatting {
                 shortenedNumericalDisplay(maxMana),
                 percentageDisplay(mana, maxMana)
         );
+    }
+
+    public static Component manaLevel(int current, int max) {
+        return Component.translatable("item.manareader.info", shortenedNumericalDisplay(current), shortenedNumericalDisplay(max));
     }
 }
