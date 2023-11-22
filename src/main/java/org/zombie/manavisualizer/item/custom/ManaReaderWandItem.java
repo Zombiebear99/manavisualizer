@@ -16,7 +16,10 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.zombie.manavisualizer.ManaNumberFormatting;
 import vazkii.botania.api.block_entity.GeneratingFlowerBlockEntity;
+import vazkii.botania.api.mana.ManaCollector;
 import vazkii.botania.api.mana.ManaPool;
+import vazkii.botania.api.mana.ManaReceiver;
+import vazkii.botania.common.block.block_entity.TerrestrialAgglomerationPlateBlockEntity;
 import vazkii.botania.common.item.WandOfTheForestItem;
 
 import java.util.List;
@@ -48,6 +51,26 @@ public class ManaReaderWandItem extends WandOfTheForestItem {
                 player.sendSystemMessage(ManaNumberFormatting.manaLevel(current, max), true);
                 return InteractionResult.SUCCESS;
             }
+
+            if (tile instanceof ManaReceiver receiver) {
+                int mana = receiver.getCurrentMana();
+                player.sendSystemMessage(Component.translatable("item.manareader.info.short", ManaNumberFormatting.amount(mana)), true);
+            }
+
+            if (tile instanceof TerrestrialAgglomerationPlateBlockEntity plate) {
+                int mana = plate.getCurrentMana();
+                int roomForMana = plate.getAvailableSpaceForMana();
+                player.sendSystemMessage(Component.translatable("item.manareader.info.needed", ManaNumberFormatting.amount(mana), ManaNumberFormatting.amount(roomForMana)), true);
+                return InteractionResult.SUCCESS;
+            }
+
+            if (tile instanceof ManaCollector collector) {
+                int mana = collector.getCurrentMana();
+                int maxMana = collector.getMaxMana();
+                player.sendSystemMessage(ManaNumberFormatting.manaLevel(mana, maxMana), true);
+                return InteractionResult.SUCCESS;
+            }
+
             if (tile instanceof GeneratingFlowerBlockEntity flower) {
                 current = flower.getMana();
                 max = flower.getMaxMana();
@@ -57,5 +80,10 @@ public class ManaReaderWandItem extends WandOfTheForestItem {
         }
 
         return super.onItemUseFirst(stack, context);
+    }
+
+    @Override
+    public @NotNull InteractionResult useOn(UseOnContext ctx) {
+        return InteractionResult.FAIL;
     }
 }
