@@ -3,6 +3,5 @@
   "itemGroup.manatab": "Mana Visualizer",
   "item.manareader.info": "Mana Level: %s/%s",
   "item.manareader.info.short": "Mana Level: %s",
-  "item.manareader.info.needed": "Mana Level: %s # Needed: %s",
   "item.manareader.tooltip": "Right click on mana pool or mana generating flower to see how much it is full in numbers."
 }

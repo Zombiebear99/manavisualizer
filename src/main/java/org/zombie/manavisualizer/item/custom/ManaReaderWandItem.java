@@ -60,7 +60,9 @@ public class ManaReaderWandItem extends WandOfTheForestItem {
             if (tile instanceof TerrestrialAgglomerationPlateBlockEntity plate) {
                 int mana = plate.getCurrentMana();
                 int roomForMana = plate.getAvailableSpaceForMana();
-                player.sendSystemMessage(Component.translatable("item.manareader.info.needed", ManaNumberFormatting.amount(mana), ManaNumberFormatting.amount(roomForMana)), true);
+                int maxMana = mana + roomForMana;
+                player.sendSystemMessage(ManaNumberFormatting.manaLevel(mana, maxMana), true);
+
                 return InteractionResult.SUCCESS;
             }
 
