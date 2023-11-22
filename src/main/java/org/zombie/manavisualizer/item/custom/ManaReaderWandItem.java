@@ -5,7 +5,10 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -87,5 +90,10 @@ public class ManaReaderWandItem extends WandOfTheForestItem {
     @Override
     public @NotNull InteractionResult useOn(UseOnContext ctx) {
         return InteractionResult.FAIL;
+    }
+
+    @Override
+    public @NotNull InteractionResultHolder<ItemStack> use(Level world, Player player, @NotNull InteractionHand hand) {
+        return InteractionResultHolder.fail(player.getItemInHand(hand));
     }
 }
