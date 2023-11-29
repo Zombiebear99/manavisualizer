@@ -1,5 +1,7 @@
 {
   "item.manavisualizer.manareader": "Mana Reader",
-
-  "itemGroup.manatab": "Mana Visualizer"
+  "itemGroup.manatab": "Mana Visualizer",
+  "item.manareader.info": "Mana Level: %s/%s",
+  "item.manareader.info.short": "Mana Level: %s",
+  "item.manareader.tooltip": "Right click on mana pool or mana generating flower to see how much it is full in numbers."
 }

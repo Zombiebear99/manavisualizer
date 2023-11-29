@@ -1,9 +1,13 @@
 package org.zombie.manavisualizer;
 
+import net.minecraft.network.chat.Component;
+
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
 
 public final class ManaNumberFormatting {
-    private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#,###.##");
+    private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#,###.##", new DecimalFormatSymbols(Locale.US));
 
     private static String numericalDisplay(int mana) {
         return String.format("%,d", mana);
@@ -46,5 +50,9 @@ public final class ManaNumberFormatting {
                 shortenedNumericalDisplay(maxMana),
                 percentageDisplay(mana, maxMana)
         );
+    }
+
+    public static Component manaLevel(int current, int max) {
+        return Component.translatable("item.manareader.info", shortenedNumericalDisplay(current), shortenedNumericalDisplay(max));
     }
 }

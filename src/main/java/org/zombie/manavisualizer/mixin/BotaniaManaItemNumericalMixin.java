@@ -9,6 +9,7 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
+import org.zombie.manavisualizer.ManaNumberFormatting;
 import vazkii.botania.api.mana.ManaItem;
 import vazkii.botania.common.item.ManaTabletItem;
 import vazkii.botania.common.item.equipment.bauble.BaubleItem;
@@ -30,9 +31,10 @@ public class BotaniaManaItemNumericalMixin extends Item
 	public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> components, @NotNull TooltipFlag tooltipFlag) {
 		final ManaItem manaItem = XplatAbstractions.INSTANCE.findManaItem(stack);
 		if (manaItem != null && !ManaTabletItem.isStackCreative(stack)) {
-			components.add(Component.literal(String.format("Mana : %s / %s",manaItem.getMana(),manaItem.getMaxMana())).withStyle(ChatFormatting.AQUA));
+			int currentMana = manaItem.getMana();
+			int maxMana = manaItem.getMaxMana();
+			components.add(ManaNumberFormatting.manaLevel(currentMana, maxMana).copy().withStyle(ChatFormatting.AQUA));
 		}
-
 		super.appendHoverText(stack, level, components, tooltipFlag);
 	}
 }
