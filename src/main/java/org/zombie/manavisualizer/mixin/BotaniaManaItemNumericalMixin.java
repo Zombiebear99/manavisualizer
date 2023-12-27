@@ -11,6 +11,8 @@ import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.zombie.manavisualizer.ManaNumberFormatting;
 import vazkii.botania.api.mana.ManaItem;
+import vazkii.botania.client.integration.jei.JEIBotaniaPlugin;
+import vazkii.botania.client.integration.jei.RunicAltarRecipeCategory;
 import vazkii.botania.common.item.ManaTabletItem;
 import vazkii.botania.common.item.equipment.bauble.BaubleItem;
 import vazkii.botania.xplat.XplatAbstractions;
@@ -19,7 +21,7 @@ import java.util.List;
 
 @Mixin({
 		ManaTabletItem.class,
-		BaubleItem.class
+		BaubleItem.class,
 })
 public class BotaniaManaItemNumericalMixin extends Item
 {

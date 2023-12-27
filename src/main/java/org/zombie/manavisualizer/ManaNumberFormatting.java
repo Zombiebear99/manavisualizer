@@ -31,8 +31,9 @@ public final class ManaNumberFormatting {
         return DECIMAL_FORMAT.format(shortenedMana) + abbreviation;
     }
 
-    public static String amount(int mana) {
-        return numericalDisplay(mana);
+    public static Component amount(int mana) {
+        return Component.nullToEmpty(numericalDisplay(mana));
+//        return numericalDisplay(mana);
     }
 
     private static String percentageDisplay(int mana, int maxMana) {
@@ -54,5 +55,6 @@ public final class ManaNumberFormatting {
 
     public static Component manaLevel(int current, int max) {
         return Component.translatable("item.manareader.info", shortenedNumericalDisplay(current), shortenedNumericalDisplay(max));
+
     }
 }

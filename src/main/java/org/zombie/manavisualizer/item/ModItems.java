@@ -7,7 +7,6 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.zombie.manavisualizer.Manavisualizer;
-import org.zombie.manavisualizer.item.ModCreativeModeTab;
 import org.zombie.manavisualizer.item.custom.ManaReaderWandItem;
 
 public class ModItems {
@@ -15,7 +14,7 @@ public class ModItems {
             DeferredRegister.create(ForgeRegistries.ITEMS, Manavisualizer.MOD_ID);
 
     public static final RegistryObject<Item> MANAREADER = ITEMS.register("manareader",
-            () -> new ManaReaderWandItem(ChatFormatting.AQUA, new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.MANAVISUALIZER_TAB)));
+            () -> new ManaReaderWandItem(new Item.Properties().stacksTo(1)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

@@ -1,7 +1,5 @@
 package org.zombie.manavisualizer.item.custom;
 
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -23,21 +21,19 @@ import vazkii.botania.api.mana.ManaCollector;
 import vazkii.botania.api.mana.ManaPool;
 import vazkii.botania.api.mana.ManaReceiver;
 import vazkii.botania.common.block.block_entity.TerrestrialAgglomerationPlateBlockEntity;
-import vazkii.botania.common.item.WandOfTheForestItem;
 
 import java.util.List;
 
-public class ManaReaderWandItem extends WandOfTheForestItem {
+public class ManaReaderWandItem extends Item {
 
-    public ManaReaderWandItem(ChatFormatting formatting, Item.Properties builder) {
-        super(formatting, builder);
+
+    public ManaReaderWandItem(Properties pProperties) {
+        super(pProperties);
     }
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> components, @NotNull TooltipFlag flag) {
-        if (!Screen.hasShiftDown()){
-            components.add(Component.translatable("item.manareader.tooltip").withStyle(ChatFormatting.AQUA));
-        }
+        components.add(Component.nullToEmpty("Right click on mana pool or mana generating flower to see how much it is full in numbers."));
         super.appendHoverText(stack, level, components, flag);
     }
     public InteractionResult onItemUseFirst(ItemStack stack, UseOnContext context) {
@@ -52,12 +48,14 @@ public class ManaReaderWandItem extends WandOfTheForestItem {
                 current = manapool.getCurrentMana();
                 max = manapool.getMaxMana();
                 player.sendSystemMessage(ManaNumberFormatting.manaLevel(current, max), true);
+//                player.sendMessage(ManaNumberFormatting.manaLevel(current,max),ChatType.SYSTEM,player.getUUID());
                 return InteractionResult.SUCCESS;
             }
 
             if (tile instanceof ManaReceiver receiver) {
                 int mana = receiver.getCurrentMana();
                 player.sendSystemMessage(Component.translatable("item.manareader.info.short", ManaNumberFormatting.amount(mana)), true);
+//                player.sendMessage(ManaNumberFormatting.amount(mana),ChatType.SYSTEM,player.getUUID());
             }
 
             if (tile instanceof TerrestrialAgglomerationPlateBlockEntity plate) {
@@ -65,6 +63,7 @@ public class ManaReaderWandItem extends WandOfTheForestItem {
                 int roomForMana = plate.getAvailableSpaceForMana();
                 int maxMana = mana + roomForMana;
                 player.sendSystemMessage(ManaNumberFormatting.manaLevel(mana, maxMana), true);
+//                player.sendMessage(ManaNumberFormatting.manaLevel(mana,maxMana), ChatType.SYSTEM,player.getUUID());
 
                 return InteractionResult.SUCCESS;
             }
@@ -73,6 +72,7 @@ public class ManaReaderWandItem extends WandOfTheForestItem {
                 int mana = collector.getCurrentMana();
                 int maxMana = collector.getMaxMana();
                 player.sendSystemMessage(ManaNumberFormatting.manaLevel(mana, maxMana), true);
+//                player.sendMessage(ManaNumberFormatting.manaLevel(mana,maxMana),ChatType.SYSTEM,player.getUUID());
                 return InteractionResult.SUCCESS;
             }
 
@@ -80,6 +80,7 @@ public class ManaReaderWandItem extends WandOfTheForestItem {
                 current = flower.getMana();
                 max = flower.getMaxMana();
                 player.sendSystemMessage(ManaNumberFormatting.manaLevel(current, max), true);
+//                player.sendMessage(ManaNumberFormatting.manaLevel(current,max),ChatType.SYSTEM,player.getUUID());
                 return InteractionResult.SUCCESS;
             }
         }
