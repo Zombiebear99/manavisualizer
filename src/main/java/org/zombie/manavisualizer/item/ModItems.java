@@ -7,7 +7,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.zombie.manavisualizer.Manavisualizer;
-import org.zombie.manavisualizer.item.ModCreativeModeTab;
+import org.zombie.manavisualizer.ModCreativeModeTab;
 import org.zombie.manavisualizer.item.custom.ManaReaderWandItem;
 
 public class ModItems {

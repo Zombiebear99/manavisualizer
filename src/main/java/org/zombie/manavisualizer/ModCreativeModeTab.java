@@ -1,7 +1,8 @@
-package org.zombie.manavisualizer.item;
+package org.zombie.manavisualizer;
 
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import org.zombie.manavisualizer.item.ModItems;
 
 public class ModCreativeModeTab {
     public static final CreativeModeTab MANAVISUALIZER_TAB = new CreativeModeTab("manatab") {
