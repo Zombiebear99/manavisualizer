@@ -12,7 +12,7 @@ public class Manavisualizer {
 
     public Manavisualizer() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        ModCreativeModTabs.register(modEventBus);
+        ModCreativeTab.register(modEventBus);
         ModItems.register(modEventBus);
     }
 }
